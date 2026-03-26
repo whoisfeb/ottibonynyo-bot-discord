@@ -1,0 +1,162 @@
+# 🤖 Discord Moderator Bot
+
+Bot Discord otomatis yang merespons chat dan memonitor konten YouTube/TikTok.
+
+## ✨ Fitur
+
+- 📊 **Monitoring YouTube** - Otomatis post video baru ke channel Discord
+- 📱 **Monitoring TikTok** - Otomatis post video baru dari TikTok
+- 💬 **Smart Chat Response** - Respons pertanyaan dan cari channel yang relevan
+- 🔍 **Content Search** - Cerdas mencari channel berdasarkan keyword pertanyaan
+- 👤 **Owner Notification** - Tag owner jika tidak ada channel yang cocok
+
+## 🚀 Setup
+
+### 1. Prerequisites
+- Node.js v16+
+- Discord Bot Token
+- Server Discord yang sudah siap
+
+### 2. Installation
+
+```bash
+# Clone repository
+git clone <repo-url>
+cd discord-moderator-bot
+
+# Install dependencies
+npm install
+```
+
+### 3. Configuration
+
+```bash
+# Copy template .env
+cp .env.example .env
+
+# Edit .env dengan data Anda
+nano .env
+```
+
+**Isi .env dengan:**
+```env
+DISCORD_TOKEN=your_bot_token_here
+GUILD_ID=1112618217421148210
+CHAT_MONITOR_CHANNEL_ID=1444172550266687558
+YOUTUBE_POST_CHANNEL_ID=1112618217932853336
+TIKTOK_POST_CHANNEL_ID=1444172572144046144
+OWNER_ID=your_user_id
+YOUTUBE_CHANNEL_URL=https://youtube.com/@ottibonynyo?si=4vKORN7RUiGRKMkt
+TIKTOK_USERNAME=ottibonynyocommnity
+YOUTUBE_CHECK_INTERVAL=300000
+TIKTOK_CHECK_INTERVAL=300000
+```
+
+### 4. Cara Mendapat Discord Token
+
+1. Buka [Discord Developer Portal](https://discord.com/developers/applications)
+2. Click "New Application"
+3. Beri nama aplikasi
+4. Go to "Bot" section
+5. Click "Add Bot"
+6. Under "TOKEN" click "Copy" (ini adalah DISCORD_TOKEN Anda)
+
+### 5. Invite Bot ke Server
+
+1. Di Developer Portal, go ke "OAuth2" → "URL Generator"
+2. Select scopes: `bot`
+3. Select permissions: 
+   - Send Messages
+   - Embed Links
+   - Read Message History
+   - Mention @everyone, @here, and all Roles
+4. Copy generated URL dan buka di browser
+5. Pilih server dan authorize
+
+### 6. Run Bot
+
+```bash
+# Development (dengan auto-reload)
+npm run dev
+
+# Production
+npm start
+```
+
+## 📖 Cara Menggunakan
+
+### Chat Response
+
+Bot akan otomatis merespons pertanyaan di channel monitor jika:
+- Anda mention bot (misal: `@Bot apa itu?`)
+- Pertanyaan mengandung tanda tanya `?`
+
+Bot akan:
+1. ✅ Cari channel Discord yang paling relevan dengan pertanyaan
+2. 💬 Mention channel tersebut di reply
+3. ⚠️ Jika tidak ada channel cocok, tag owner untuk membantu
+
+### YouTube Monitoring
+
+Bot secara otomatis akan:
+- Cek channel YouTube setiap 5 menit (bisa diubah di config)
+- Post video baru ke channel `YOUTUBE_POST_CHANNEL_ID`
+- Menampilkan title, thumbnail, dan link video
+
+### TikTok Monitoring
+
+Bot secara otomatis akan:
+- Cek akun TikTok setiap 5 menit
+- Post video baru ke channel `TIKTOK_POST_CHANNEL_ID`
+- Menampilkan username, description, dan link video
+
+## ⚙️ Konfigurasi Lanjutan
+
+### Channel IDs
+Untuk mendapat channel ID di Discord:
+1. Enable Developer Mode (User Settings → Advanced → Developer Mode)
+2. Right-click channel → Copy ID
+
+### Check Interval
+Ubah di `.env`:
+- `300000` = 5 menit
+- `600000` = 10 menit
+- `900000` = 15 menit
+
+### Response Delay
+Default 1 detik, bisa diubah di `.env` untuk terasa lebih natural
+
+## 📝 Troubleshooting
+
+### Bot tidak online
+- Cek DISCORD_TOKEN di .env
+- Pastikan bot sudah di-invite ke server
+- Cek apakah bot memiliki permission yang cukup
+
+### Monitoring tidak jalan
+- Cek Channel IDs di config
+- Pastikan bot bisa akses channel tersebut
+- Cek apakah bot punya permission "Send Messages"
+
+### Chat response tidak jalan
+- Pastikan pertanyaan ada di channel yang benar (CHAT_MONITOR_CHANNEL_ID)
+- Pertanyaan harus mention bot atau mengandung `?`
+- Cek console untuk error messages
+
+## 🔗 Links Penting
+
+- [Discord.js Docs](https://discord.js.org/)
+- [Discord Developer Portal](https://discord.com/developers)
+- [YouTube API Docs](https://developers.google.com/youtube)
+
+## 📄 License
+
+MIT License - Bebas digunakan untuk keperluan apapun
+
+## 👨‍💻 Author
+
+Created by: hubdc79
+
+---
+
+**Butuh bantuan?** Hubungi owner atau cek console untuk error details!

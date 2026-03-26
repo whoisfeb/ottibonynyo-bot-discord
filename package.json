@@ -1,0 +1,27 @@
+{
+  "name": "discord-moderator-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot with YouTube/TikTok Monitoring & Payment System",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "ngrok": "ngrok start discord-bot"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "discord.js": "^14.25.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-cache": "^5.1.2",
+    "qrcode": "^1.5.4",
+    "qris-dinamis": "^1.0.2",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
